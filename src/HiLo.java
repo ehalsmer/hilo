@@ -9,20 +9,25 @@ public class HiLo {
 		String playAgain = "";
 		// create a random number for user to guess
 		do {
-			int number = (int)(Math.random()*100 + 1);
+			int number = (int)(Math.random()*200 - 99);
 			//System.out.println(number);
 			int guess = 0;
+			int counter = 0;
 			// prompt the user:
 			while (guess != number) {
-				System.out.println("Guess a number between 1 and 100:");
+				System.out.println("Guess a number between -100 and 100:");
 				guess = scan.nextInt();
 				System.out.println("You entered " + guess + ".");
-				if (guess < number) 
-					System.out.println(guess + " is too low, try again");
-				else if (guess > number)
-					System.out.println(guess + " is too high, try again");
+				if (guess < number) {
+					counter = counter + 1;
+					System.out.println(guess + " is too low, try again");					
+				}
+				else if (guess > number) {
+					counter = counter + 1;
+					System.out.println(guess + " is too high, try again");					
+				}
 				else 
-					System.out.println(guess + " is correct. You win!");
+					System.out.println(guess + " is correct. You won in " + counter + " guesses!");
 			}
 			System.out.println("Do you want to play again (y/n)?");
 			playAgain = scan.next();
